@@ -89,9 +89,9 @@ input[type="text"] {
   text-align:center;
   /* background-color: #eeeeee; */
   /* display: block; */
-  height:0px;
+   height:0px; 
   /* width:300px;     */
-  transition:all 0.8s ease-in;
+  transition:all 0.8s cubic-bezier(0.39, 0.575, 0.565, 1); /* easeOutSine, see http://easings.net/ */
   overflow:hidden;
 }
 
@@ -99,8 +99,20 @@ input[type="text"] {
    height: 150px; 
 }
 
-.fade-enter-active, .fade-leave-active {
-   transition: opacity 1s ease;
+#vardai > div {
+   transform: translateY(-150px); 
+   transition:all 0.8s cubic-bezier(0.39, 0.575, 0.565, 1); /* easeOutSine, see http://easings.net/ */
+}
+
+#vardai.reveal > div {
+   transform: translateY(0px); 
+}
+
+.fade-enter-active {
+   transition: opacity 0.6s cubic-bezier(0.6, 0.04, 0.98, 0.335); /* easeInCirc, see http://easings.net/ */
+}
+.fade-leave-active {
+   transition: opacity 1s cubic-bezier(0.075, 0.82, 0.165, 1); /* easeOutCirc, see http://easings.net/ */
 }
 .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
   opacity: 0;
