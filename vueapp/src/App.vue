@@ -5,8 +5,8 @@
       </div>
       <div id="vardai" :class="{reveal:showNames}">
         <transition-group name="fade" tag="div">
-          <input type="text" v-show="showNames" v-for="(player, key, index) in players" :placeholder="key" :key="index"  :value="player">
-        </transition-group>  
+          <input type="text" v-show="showNames" v-for="(player, key, index) in players" :placeholder="key" :key="index">
+        </transition-group>
       </div>
       <div id="pradziosMygtukas">
         <input type="button" value="Let's go" v-on:click="showNames = !showNames">
@@ -21,9 +21,9 @@ export default {
     return {
       showNames: false,
       players: {
-        'Player 1': 'nif nif', 
-        'Player 2': 'naf naf', 
-        'Player 3': 'nuf nuf', 
+        'Player 1': 'nif nif',
+        'Player 2': 'naf naf',
+        'Player 3': 'nuf nuf',
         'Player 4': 'nax nax'},
       msg: 'Welcome to Your Vue.js App'
     }
@@ -89,23 +89,23 @@ input[type="text"] {
   text-align:center;
   /* background-color: #eeeeee; */
   /* display: block; */
-   height:0px; 
+   height:0px;
   /* width:300px;     */
   transition:all 0.8s cubic-bezier(0.39, 0.575, 0.565, 1); /* easeOutSine, see http://easings.net/ */
   overflow:hidden;
 }
 
 #vardai.reveal{
-   height: 150px; 
+   height: 150px;
 }
 
 #vardai > div {
-   transform: translateY(-150px); 
+   transform: translateY(-150px);
    transition:all 0.8s cubic-bezier(0.39, 0.575, 0.565, 1); /* easeOutSine, see http://easings.net/ */
 }
 
 #vardai.reveal > div {
-   transform: translateY(0px); 
+   transform: translateY(0px);
 }
 
 .fade-enter-active {
