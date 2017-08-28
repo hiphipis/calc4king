@@ -3,9 +3,10 @@
       <div id="picture">
           <img src="https://goo.gl/XxkWUc" alt="King of hearts">
       </div>
-      <players-list :showNames='showNames'></players-list>
+      <players-list v-if='showNames' :showNames='showNames'></players-list>
+      <game-selection v-else ></game-selection>
       <div id="pradziosMygtukas">
-        <input type="button" value="Let's go" v-on:click="showNames = !showNames">
+        <input type="button" value="Let's go" v-on:click="letsGo">
       </div>
   </div>
 </template>
@@ -13,24 +14,26 @@
 <script>
 import { mapGetters, mapActions } from 'vuex'
 import PlayersList from './PlayersList.vue'
+import GameSelection from './GameSelection.vue'
 
 export default {
   name: 'app',
-  components: {PlayersList},
+  components: {PlayersList, GameSelection},
   data () {
     return {
       showNames: false
     }
   },
-  computed: mapGetters({
-      players: 'allPlayers'
-  })
-
+  methods: {
+    letsGo() {
+      this.showNames = !this.showNames
+    }
+  }
 }
 </script>
 
 <style>
-body {
+/*body {
   margin: 0;
 }
 #background {
@@ -50,12 +53,9 @@ img {
 #picture {
   position: relative;
   margin: 5px;
-  /*top: 20%;
-  left: 45%;*/
 }
 #pradziosMygtukas {
   position: relative;
-  /*width: 100px;*/
 }
 
 input[type="button"] {
@@ -66,6 +66,6 @@ input[type="button"] {
   padding: 6px 20px;
   margin-top: 5px;
   margin-bottom: 5px;
-}
+}*/
 
 </style>

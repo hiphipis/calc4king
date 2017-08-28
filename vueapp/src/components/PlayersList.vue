@@ -32,14 +32,9 @@ input[type="text"] {
 }
 #vardai {
   display: block;
-  /* padding: 5px;
-  margin: 5px; */
 
   text-align:center;
-  /* background-color: #eeeeee; */
-  /* display: block; */
-   height:0px;
-  /* width:300px;     */
+  height:0px;
   transition:all 0.8s cubic-bezier(0.39, 0.575, 0.565, 1); /* easeOutSine, see http://easings.net/ */
   overflow:hidden;
 }

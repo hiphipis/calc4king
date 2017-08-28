@@ -87,3 +87,25 @@ img {
 	position:relative;
 	top:1px;
 }
+table {
+  color: white;
+  border: 1px solid white;
+  margin: 20px;
+  border-spacing: 0px;
+  border-collapse: collapse;
+}
+th {
+  border: 1px solid white;
+}
+td {
+  border: 1px solid white;
+}
+ /*.inputas {
+   background: linear-gradient(135deg,#333380,#339966);
+ }*/
+#vardai > div > input[type="text"] {
+  margin: 5px;
+  border: 0px;
+  background: linear-gradient(135deg,#333380,#339966);
+
+}
