@@ -1,10 +1,11 @@
 <template>
   <div id="pasirinkimoMygtukai">
-    <h1>Dabar renkasi {{player.name}}</h1>
-    <input type="button"  class="myButton" v-for="(game, key, index) in games" :value="key" :key="index" v-on:click="select(key, game, index)">
-    <div id="pradziosMygtukas">
+    <div id="playerGoingToChoose">Dabar renkasi <span class="playerName">{{player.name}}</span></div>
+    <input type="button"  class="myButton"
+        v-for="(game, key) in games" :disabled="game.played" :value="game.name" :key="key" v-on:click="select(game, key)">
+    <!-- <div id="pradziosMygtukas">
       <input type="button" value="Next" v-on:click="next">
-    </div>
+    </div> -->
   </div>
 </template>
 
@@ -27,12 +28,11 @@ export default {
       this.nextPlayer()
       this.letsGo()
     },
-    select(key, game, index) {
-      // this.player.games[index] = false
-      console.log(`key ${key} game ${game} index ${index}`);
-      // console.log(this.games.keys())
+    select(game, key) {
+      // console.log(`key ${key} game ${game}`);
+      // console.log(game)
       this.selectGame(key)
-      this.letsGo()
+      this.next()
     },
     ...mapMutations({
       nextPlayer: 'nextPlayer',
@@ -43,4 +43,13 @@ export default {
 </script>
 
 <style>
+#playerGoingToChoose {
+  color: white;
+  font-size: 2em;
+}
+
+.playerName {
+  color: lightseagreen;
+  font-weight: bolder;
+}
 </style>

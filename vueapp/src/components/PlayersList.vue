@@ -1,19 +1,29 @@
 <template>
-  <div id="vardai" :class="{reveal:showNames}">
-    <transition-group name="fade" tag="div">
-      <input type="text" class="vardai" v-show="showNames" v-for="(player, key, index) in players" :placeholder="key" :key="index">
-    </transition-group>
+  <div id="vardai"> <!-- :class="{reveal:showNames}"-->
+    <!-- <transition-group name="fade" tag="div"> -->
+      <input type="text" class="vardai"  
+        v-for="(player, key, index) in players" :placeholder="key" :key="key" :value="player.name" @input="updateName(key, $event)" >
+    <!-- </transition-group> -->
   </div>
 </template>
 
 <script>
-import { mapGetters, mapActions } from 'vuex'
+import { mapGetters, mapMutations } from 'vuex'
 
 export default {
-  props: ['showNames'],
+  props: ['letsGo'],
   computed: mapGetters({
       players: 'allPlayers'
-  })
+  }),
+  methods: {
+    updateName(key, e) {
+      // console.log(`updateName ${key} ${e.target.value}`)
+      this.updateNameInStore({key, name: e.target.value.toUpperCase()})
+    },
+    ...mapMutations({
+      updateNameInStore: 'updatePlayerName'
+    })
+  }
 
 }
 </script>

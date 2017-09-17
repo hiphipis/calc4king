@@ -39,14 +39,15 @@ img {
   color: white;
   padding: 6px 20px;
 }
-#background > div > input[type="text"] {
+/* #background > div > input[type="text"] {
   display: flex;
   padding: 5px;
-}
+} */
 
 input[type="text"].vardai {
   display: flex;
   margin: 5px;
+  padding: 5px;
   border: 0px;
   background: linear-gradient(135deg,#333380,#339966);
 }
@@ -89,6 +90,9 @@ input[type="text"].vardai {
 .myButton:active {
 	position:relative;
 	top:1px;
+}
+.myButton:disabled {
+  background: gray;
 }
 table {
   color: white;

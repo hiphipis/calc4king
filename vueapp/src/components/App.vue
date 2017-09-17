@@ -3,7 +3,7 @@
       <div class="picture">
           <img src="https://goo.gl/XxkWUc" alt="King of hearts">
       </div>
-      <players-list v-if='seka == 1' :showNames='showNames'></players-list>
+      <players-list v-if='seka == 1' :letsGo='letsGo' ></players-list>
       <game-selection v-if='seka == 2' :letsGo='letsGo' ></game-selection>
       <cards-taken v-if='seka == 3'></cards-taken>
       <div id="pradziosMygtukas">
