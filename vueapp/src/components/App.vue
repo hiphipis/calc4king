@@ -1,10 +1,11 @@
 <template>
   <div id="background">
-      <div id="picture">
+      <div class="picture">
           <img src="https://goo.gl/XxkWUc" alt="King of hearts">
       </div>
-      <players-list v-if='showNames' :showNames='showNames'></players-list>
-      <game-selection v-else ></game-selection>
+      <players-list v-if='seka == 1' :showNames='showNames'></players-list>
+      <game-selection v-if='seka == 2' :letsGo='letsGo' ></game-selection>
+      <cards-taken v-if='seka == 3'></cards-taken>
       <div id="pradziosMygtukas">
         <input type="button" value="Let's go" v-on:click="letsGo">
       </div>
@@ -15,18 +16,32 @@
 import { mapGetters, mapActions } from 'vuex'
 import PlayersList from './PlayersList.vue'
 import GameSelection from './GameSelection.vue'
+import CardsTaken from './CardsTaken.vue'
 
 export default {
   name: 'app',
-  components: {PlayersList, GameSelection},
+  components: {PlayersList, GameSelection, CardsTaken},
   data () {
     return {
-      showNames: false
+      seka: 1,
+      showNames: true
     }
   },
   methods: {
     letsGo() {
-      this.showNames = !this.showNames
+      // if (this.seka == 3) {
+      //   this.seka = 0;
+      // }
+      this.seka = this.seka % 3 + 1;
+
+      // if (this.seka == 1) {
+      //   this.showNames = true;
+      // }
+      // else {
+      //     this.showNames = false;
+      // }
+      this.showNames = (this.seka == 1)
+      console.log(`seka: ${this.seka}; showNames: ${this.showNames}`);
     }
   }
 }

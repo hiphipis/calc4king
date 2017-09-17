@@ -4,13 +4,8 @@ import Vuex from 'vuex'
 
 Vue.use(Vuex)
 
-const state = {
-  players: {
-    'Player 1': 'nif nif',
-    'Player 2': 'naf naf',
-    'Player 3': 'nuf nuf',
-    'Player 4': 'nax nax'},
-  games2Play: {
+const initGames2Play = function() {
+  return {
     "Neimti vyru": true,
     "Neimti damu": true,
     "Neimti cirvu": true,
@@ -24,6 +19,29 @@ const state = {
   }
 }
 
+const state = {
+  players: {
+    'Player 1': {
+      name: 'nif nif',
+      games: initGames2Play()
+    },
+    'Player 2': {
+      name: 'naf naf',
+      games: initGames2Play()
+    },
+    'Player 3': {
+      name: 'nuf nuf',
+      games: initGames2Play()
+    },
+    'Player 4': {
+      name: 'nax nax',
+      games: initGames2Play()
+    }
+  },
+  currentPlayerIndex: 1,
+  games2Play: initGames2Play()
+}
+
 const debug = process.env.NODE_ENV !== 'production'
 
 const store = new Vuex.Store({
@@ -35,6 +53,21 @@ const store = new Vuex.Store({
     },
     allGames: state => {
       return state.games2Play
+    },
+    currentPlayer: state => {
+      const key = `Player ${state.currentPlayerIndex}`
+      console.log(key)
+      return state.players[key]
+    },
+  },
+  mutations: {
+    nextPlayer(state) {
+      state.currentPlayerIndex = state.currentPlayerIndex % 4 + 1
+    },
+    selectGame(state, gameIx) {
+      const key = `Player ${state.currentPlayerIndex}`
+      state.players[key].games[gameIx] = false
+      console.log(state.players[key].games[gameIx])
     }
   }
   , strict: debug

@@ -1,7 +1,7 @@
 <template>
   <div id="vardai" :class="{reveal:showNames}">
     <transition-group name="fade" tag="div">
-      <input type="text" v-show="showNames" v-for="(player, key, index) in players" :placeholder="key" :key="index">
+      <input type="text" class="vardai" v-show="showNames" v-for="(player, key, index) in players" :placeholder="key" :key="index">
     </transition-group>
   </div>
 </template>
@@ -18,7 +18,7 @@ export default {
 }
 </script>
 
-<style>
+<!--style>
 input[type="text"] {
   display: flex;
   height: 20px;
@@ -62,4 +62,4 @@ input[type="text"] {
   opacity: 0;
 }
 
-</style>
+</style-->
